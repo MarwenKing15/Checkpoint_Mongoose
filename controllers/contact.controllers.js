@@ -31,6 +31,16 @@ const getContacts = async (req, res) => {
 	}
 };
 
+const getOneContact = async (req, res) => {
+	try {
+		const { _id } = req.params;
+		const contactFound = await Contact.find({ _id });
+		res.status(200).send({ msg: "Contact Found:", contactFound });
+	} catch (error) {
+		res.status(400).send({ msg: "Can not get this contact", error });
+	}
+};
+
 const deleteContact = async (req, res) => {
 	try {
 		const contactID = req.params.id;
@@ -61,6 +71,7 @@ const updateContact = async (req, res) => {
 module.exports = controllers = {
 	addContact,
 	getContacts,
+	getOneContact,
 	deleteContact,
 	updateContact,
 };

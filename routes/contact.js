@@ -2,6 +2,7 @@ const express = require("express");
 const {
 	addContact,
 	getContacts,
+	getOneContact,
 	deleteContact,
 	updateContact,
 } = require("../controllers/contact.controllers");
@@ -26,6 +27,15 @@ router.post("/", addContact);
  */
 
 router.get("/", getContacts);
+
+/**
+ * @desc: Get one contact
+ * @method: GET
+ * @path :'http://localhost:5000/api/api/contacts/'
+ * @data : req.params
+ */
+
+router.get("/:_id", getOneContact);
 
 /**
  * @desc: Delete one contact
